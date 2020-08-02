@@ -13,7 +13,9 @@
            <%= f.text_area :description, class: 'form-control' %>
          </div>
          
-         <%= f.submit '投稿する' , class: 'btn btn-black btn-block' %>
+         <% if logged_in? %>
+         <p><%= f.submit '投稿する' , class: 'btn btn-black btn-block' %></p>
+         <% end %>
          
          <% end %>
       </div>

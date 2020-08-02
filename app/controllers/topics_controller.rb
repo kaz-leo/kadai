@@ -1,4 +1,8 @@
 class TopicsController < ApplicationController
+  def index
+    @topics = Topic.all
+  end
+  
   def new
     @topic = Topic.new
   end
@@ -13,6 +17,10 @@ class TopicsController < ApplicationController
       flash.now[:danger] = "投稿に失敗"
       render :new
     end
+  end
+  
+  def logged_in?
+    !current_user.nil?
   end
   
   private
