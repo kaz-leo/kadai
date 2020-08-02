@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
   
   def create
-    user = User.find_by(session_params)
+    user = User.find_by(email_params)
      if user && user.authenticate(params[:session][:password])
        log_in user
        redirect_to root_path, success: 'ログイン成功'
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
     @current_user = nil
   end
   
-  def session_params
+  def email_params
       params.require(:session).permit(:email)
   end
 end
